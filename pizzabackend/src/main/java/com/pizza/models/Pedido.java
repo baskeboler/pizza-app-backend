@@ -4,13 +4,20 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Document
 public class Pedido {
 	@Id
 	private String id;
 	private Cliente cliente;
+	
+	
 	private List<ItemPedido> items;
 	private String direccion;
+	
+	@DateTimeFormat(style="S-")
 	private Date fecha;
 	
 	public String getDireccion() {
