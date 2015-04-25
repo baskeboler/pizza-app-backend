@@ -3,8 +3,7 @@ package com.pizza.models;
 import java.util.List;
 
 public class Menu extends Producto {
-	public Menu(String nombre, int precio) {
-		super(nombre, precio);
+	public Menu() {
 		// TODO Auto-generated constructor stub
 	}
 	private List<Plato> platos;
