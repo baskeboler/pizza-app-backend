@@ -41,7 +41,7 @@ public class VerySimpleCorsFilter implements Filter {
 				+ "accept-language, connection, dnt, host, "
 				+ "origin, referer, user-agent, content-type, "
 				+ "x-requested-with");
-		response.addHeader("Access-Control-Expose-Headers", "x-auth-token");
+		response.addHeader("Access-Control-Expose-Headers", "x-auth-token, location");
 
 		if (!((HttpServletRequest) req).getMethod().equals("OPTIONS")) {
 			chain.doFilter(req, res);

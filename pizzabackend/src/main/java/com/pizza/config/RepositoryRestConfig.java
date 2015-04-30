@@ -13,7 +13,7 @@ public class RepositoryRestConfig extends
 	@Override
 	protected void configureRepositoryRestConfiguration(
 			RepositoryRestConfiguration config) {
-		config.setBaseUri("/api");
+		config.setBaseUri("/api"); config.setReturnBodyOnCreate(true);
 		super.configureRepositoryRestConfiguration(config);
 	}
 }
