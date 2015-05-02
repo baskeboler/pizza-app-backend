@@ -20,16 +20,17 @@ import com.pizza.repositories.ClienteRepository;
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
-	
 	@Autowired
 	ClienteRepository repo;
-	
+
 	@RequestMapping("/search/suggest")
 	@ResponseBody
-	public HttpEntity<ClientesResources> suggest(@RequestParam("q")String q) {
+	public HttpEntity<ClientesResources> suggest(@RequestParam("q") String q) {
 		List<Cliente> res = repo.suggest(q);
 		ClientesResources resource = new ClientesResources(res);
-		resource.add(ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(ClienteController.class).suggest(q)).withSelfRel());
+		resource.add(ControllerLinkBuilder.linkTo(
+				ControllerLinkBuilder.methodOn(ClienteController.class)
+						.suggest(q)).withSelfRel());
 		return new ResponseEntity<ClientesResources>(resource, HttpStatus.OK);
 	}
 }

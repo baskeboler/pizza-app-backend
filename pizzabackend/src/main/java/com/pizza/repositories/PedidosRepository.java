@@ -10,6 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.pizza.models.Pedido;
+import com.pizza.models.Cliente;
 
 @RepositoryRestResource(collectionResourceRel = "pedidos", path = "pedidos")
 public interface PedidosRepository extends MongoRepository<Pedido, String> {
@@ -19,5 +20,6 @@ public interface PedidosRepository extends MongoRepository<Pedido, String> {
 	List<Pedido> findByFecha(@Param(value = "fecha") Date fecha);
 	@Query("{'estado.estado': {'$ne': 'ENTREGADO' }}")
 	List<Pedido> obtenerPedidosPendientes();
+	List<Pedido> findByClienteId(String id);
 
 }
