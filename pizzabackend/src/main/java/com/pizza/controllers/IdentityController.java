@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IdentityController {
 
-	@RequestMapping(value = "/identity", method=RequestMethod.GET)
+	@RequestMapping(value = "/api/identity", method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> identity(Principal identity, HttpServletRequest request) {
 		
 		Map<String, Object> map = new LinkedHashMap<>();

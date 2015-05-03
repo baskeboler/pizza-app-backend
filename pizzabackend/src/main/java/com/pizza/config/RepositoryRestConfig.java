@@ -7,6 +7,8 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import com.pizza.models.Cliente;
 import com.pizza.models.Pedido;
+import com.pizza.models.Producto;
+import com.pizza.repositories.projections.ClienteProjection;
 
 @Configuration
 @Import(SpringBootRepositoryRestMvcConfiguration.class)
@@ -18,7 +20,8 @@ public class RepositoryRestConfig extends
 			RepositoryRestConfiguration config) {
 		config.setBaseUri("/api");
 		config.setReturnBodyOnCreate(true);
-		config.exposeIdsFor(Cliente.class, Pedido.class);
+		config.exposeIdsFor(Cliente.class, Pedido.class, Producto.class);
+		config.projectionConfiguration().addProjection(ClienteProjection.class);
 		super.configureRepositoryRestConfiguration(config);
 	}
 }

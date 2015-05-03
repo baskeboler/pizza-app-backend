@@ -47,11 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.setHttpSessionStrategy(new HeaderHttpSessionStrategy());
 		http.addFilterBefore(sessionRepositoryFilter,
 				ChannelProcessingFilter.class).csrf().disable();
-
+	
 		http.sessionManagement().sessionCreationPolicy(
 				SessionCreationPolicy.IF_REQUIRED);
+		http.authorizeRequests().antMatchers("/api/identity").authenticated();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**").hasRole("USER");
-
+	
 		/*
 		 * http .authorizeRequests() .anyRequest().authenticated() .and()
 		 * .requestCache() .requestCache(new NullRequestCache()) .and()

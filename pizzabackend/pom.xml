@@ -32,10 +32,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -46,11 +44,8 @@
 			<artifactId>neo4j-cypher-compiler-1.9</artifactId>
 			<version>2.0.3</version>
 		</dependency>
-		<dependency>
-			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-cypher-compiler-2.0</artifactId>
-			<version>2.0.3</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.neo4j</groupId> <artifactId>neo4j-cypher-compiler-2.0</artifactId> 
+			<version>2.0.3</version> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
@@ -73,17 +68,11 @@
 			<version>1.0.1.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
-			<version>1.0.1.RELEASE</version>
-			<type>pom</type>
+			<groupId>unquietcode.tools.flapi</groupId>
+			<artifactId>flapi</artifactId>
+			<version>0.8</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-redis</artifactId>
-			<version>1.2.3.RELEASE</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -92,7 +81,41 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>unquietcode.tools.flapi</groupId>
+				<artifactId>flapi-build-plugin</artifactId>
+				<version>0.8</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<descriptorClasses>com.pizza.models.helpers.ClienteBuilderDescriptorMaker</descriptorClasses>
+							<sourcesDirectory>${basedir}/src/main/java </sourcesDirectory>
+							<includeRuntime>true</includeRuntime>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>uqc</id>
+			<name>UnquietCode Repository</name>
+			<url>http://www.unquietcode.com/maven/releases</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>uqc</id>
+			<name>UnquietCode Repository</name>
+			<url>http://www.unquietcode.com/maven/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
