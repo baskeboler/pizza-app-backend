@@ -16,7 +16,6 @@ import com.pizza.Application;
 import com.pizza.models.Cliente;
 import com.pizza.models.builders.Cliente.ClienteFactory;
 
-@ComponentScan(basePackages="com.pizza")
 @SpringApplicationConfiguration(classes = Application.class, inheritInitializers = true, inheritLocations = true)
 @RunWith(value = SpringJUnit4ClassRunner.class)
 public class ClienteTest {

@@ -16,7 +16,7 @@ import com.pizza.models.Cliente;
 public interface ClienteRepository extends MongoRepository<Cliente, String>, ClienteRepositoryCustom{
 	List<Cliente> findByEmailLike( @Param(value="email") String email);
 	List<Cliente> findByNombreContainingOrDireccionContainingOrTelefonoContaining(@Param(value="valor")String valor);
-	List<Cliente> findAllBy(TextCriteria criteria, Sort sort);
+	List<Cliente> findAllBy(@Param(value="criteria")TextCriteria criteria, Sort sort);
 	//Page<Cliente> findAllBy(TextCriteria criteria, Pageable pageable);
 
 }
